@@ -1,0 +1,80 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Generate Prayer Prompt</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="timer">01:00</div>
+    <h1>Generate Prayer Prompt</h1>
+    <p id="prompt"></p>
+    <button id="generateBtn" onclick="generatePrompt()">Generate</button>
+    
+    
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <p>Time's up! Would you like to generate a new prompt?</p>
+        <button onclick="goToIndexPage()">Yes</button>
+      </div>
+    </div>
+    
+    
+  </body>
+</html>
+
+
+ -->
+
+
+ <!DOCTYPE html>
+ <html>
+ <head>
+     <title>Generate Prayer Prompt</title>
+     <!-- Include Bootstrap CSS -->
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+     <!-- Include custom CSS -->
+     <link rel="stylesheet" href="style.css">
+ </head>
+ <body>
+     <div class="container text-center d-flex">
+         <div id="timer" class="display-1 mb-4">01:00</div>
+         <h1>Generate Prayer Prompt</h1>
+         <div id="prompt-container" class="bg-primary text-white p-4 mb-4 d-flex justify-content-center align-items-center h-100">
+           
+             <p id="prompt" class="h1"></p>
+          
+         </div>
+         <button id="generateBtn" class="btn btn-primary" onclick="generatePrompt()">Generate</button>
+       </div>
+       
+       <div id="myModal" class="modal">
+         <div class="modal-dialog modal-dialog-centered">
+           <div class="modal-content">
+             <div class="modal-body">
+               <p>Time's up! Would you like to generate a new prompt?</p>
+               <button class="btn btn-primary" onclick="goToIndexPage()">Yes</button>
+             </div>
+           </div>
+         </div>
+       </div>
+       
+       
+       
+       
+ 
+     <!-- Include Bootstrap JS -->
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+     <!-- Include custom JS -->
+     <script src="script.js"></script>
+ 
+     <script>
+         // Set data-toggle and data-target attributes for the modal trigger button
+         document.getElementById("generateBtn").setAttribute("data-toggle", "modal");
+         document.getElementById("generateBtn").setAttribute("data-target", "#myModal");
+     </script>
+ </body>
+ </html>
+ 
+ 
+ 
+
