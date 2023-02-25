@@ -1,84 +1,66 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Generate Prayer Prompt</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <h1>Generate Prayer Prompt</h1>
-    <p id="prompt"></p>
-    <button id="generateBtn" onclick="generatePrompt()">Generate</button>
-    <div id="timer">01:00</div>
+<head>
+	<title>Generate Prayer Prompt</title>
+	<!-- Include Bootstrap CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<!-- Include custom CSS -->
+	<link rel="stylesheet" href="style.css">
+
+  <style>
+		body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			margin: 0;
+		}
+		
+	</style>
+</head>
+<body>
+	<div class="d-flex align-items-center vh-100">
     
-    <div id="myModal" class="modal">
-      <div class="modal-content">
-        <p>Time's up! Would you like to generate a new prompt?</p>
-        <button onclick="goToIndexPage()">Yes</button>
-      </div>
-    </div>
-    
-    <script>
-  
-      
-      // Generate prompt function
-      function generatePrompt() {
-        // Insert your Airtable API key, base ID, and table name here
-        var airtable_api_key = "key8SJ7g5Hhytq4g4";
-        var airtable_base_id = "appTY4GFqZStNO0g5";
-        var airtable_table_name = "tblMMbihGl5ZRRsuP";
-
-        // Disable the generate button after click
-    document.getElementById("generateBtn").disabled = true;
-        
-        // Construct the URL for the Airtable API request
-        var url = "https://api.airtable.com/v0/" + airtable_base_id + "/" + airtable_table_name + "?view=Grid%20view";
-        
-        // Send the GET request to the Airtable API
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", url, true);
-        xhr.setRequestHeader("Authorization", "Bearer " + airtable_api_key);
-        xhr.onreadystatechange = function() {
-          if (xhr.readyState == 4 && xhr.status == 200) {
-            // Parse the response JSON and choose a random prompt
-            var response = JSON.parse(xhr.responseText);
-            var records = response.records;
-            var random_prompt = records[Math.floor(Math.random() * records.length)];
-            var prompt = random_prompt.fields["Prayers"];
-            
-            // Display the prompt
-            document.getElementById("prompt").innerHTML = prompt;
-
-            // call the timer
-            timer();
-          }
-        };
-        xhr.send();
-       
-      }
-
-     function timer(){
-
-         // Set the timer for 1 minute
-         var timeleft = 60;
-      var downloadTimer = setInterval(function(){
-        document.getElementById("timer").innerHTML = "00:" + timeleft;
-        timeleft -= 1;
-        if(timeleft <= 0){
-          clearInterval(downloadTimer);
-          var modal = document.getElementById("myModal");
-          modal.style.display = "block";
-        }
-      }, 1000);
-
-}
-
-
+  <div class="container text-center">
+        <div id="timer" class="h1 text-primary">01:00</div>
+        <h1>Generate Prayer Point</h1>
+        <div id="prompt-container" class="bg-primary text-white p-4 mb-4">
+          
+            <p id="prompt" class="display-1 mb-4"></p>
          
+        </div>
+        <button id="generateBtn" class="btn btn-primary btn-lg" onclick="generatePrompt()">Generate</button>
+      </div>
+    
+  </div>
       
-      // Function to go to index page
-      function goToIndexPage() {
-        window.location.href = "index.html";
-      }
-    </script>
-  </body>
+      <div id="myModal" class="modal text-center">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-body">
+              <p class="h5">Thank you for giving your 1 Minute! Would love to get another prayer point?</p>
+              <button class="btn btn-primary" onclick="goToIndexPage()">Yes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      
+
+	<!-- Include Bootstrap JS -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<!-- Include custom JS -->
+	<script src="script.js"></script>
+
+	<script>
+		// Set data-toggle and data-target attributes for the modal trigger button
+		document.getElementById("generateBtn").setAttribute("data-toggle", "modal");
+		document.getElementById("generateBtn").setAttribute("data-target", "#myModal");
+	</script>
+</body>
 </html>
+
+
